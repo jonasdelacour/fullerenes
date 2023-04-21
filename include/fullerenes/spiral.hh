@@ -1,5 +1,5 @@
 #pragma once
-#include <utility> 
+#include <utility>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -29,12 +29,12 @@ struct general_spiral {
   {
     return jumps == s.jumps && spiral == s.spiral;
   }
-  
-  friend ostream &operator<<(ostream &s, const general_spiral &GS)
-  {
-    return s << make_pair(GS.jumps,GS.spiral); 
-  }
-  
+
+  //friend ostream &operator<<(ostream &s, const general_spiral &GS)
+  //{
+  //  return s << make_pair(GS.jumps,GS.spiral);
+  //}
+
 };
 
 // Make general spirals hashable
@@ -109,20 +109,20 @@ struct spiral_nomenclature {
 
   spiral_nomenclature(const string &str);
   spiral_nomenclature(const PlanarGraph &G, const naming_scheme_t name_type=CAGE,
-		      const construction_scheme_t construction_scheme=CS_NONE,		      
+		      const construction_scheme_t construction_scheme=CS_NONE,
 		      bool rarest_special_start = true);
 
   static string search_scheme_txt[4], construction_scheme_txt[4], naming_scheme_txt[4];
 
   string to_string(bool unpacked=false) const;
-  
+
   friend ostream& operator<<(ostream& s, const spiral_nomenclature &sn)
   {
     s << sn.to_string();
     return s;
   }
 
-  
+
 };
 
 
