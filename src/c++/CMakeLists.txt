@@ -15,6 +15,7 @@ add_library(fullerenes SHARED
   layout.cc
   polyhedron-optimize.cc
   eisenstein.cc
+  isomerdb.cc
   ../contrib/mgmres.cc
 )
 
