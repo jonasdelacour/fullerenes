@@ -39,7 +39,7 @@ namespace BuckyGen {
   
   void stop(const buckygen_queue& Q);
 
-  bool next_fullerene(const buckygen_queue& Q, Graph& G);
+  bool next_fullerene(buckygen_queue& Q, Graph& G);
 }
 
 
