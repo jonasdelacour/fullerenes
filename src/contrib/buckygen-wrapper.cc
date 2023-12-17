@@ -114,12 +114,15 @@ bool push_graph(const buckygen_queue& Q)
   }
 }
 
-bool next_fullerene(const buckygen_queue& Q, Graph& G)
+bool next_fullerene(buckygen_queue& Q, Graph& G)
 {
   struct {
     long mtype;
     int neighbours[6*MAXN];
   } msg;
+
+  if(Q.qid<0) return false; /* Queue is closed. */
+  
   ssize_t length = msgrcv(Q.qid, (void*)&msg, sizeof(long)+6*Q.Nvertices*sizeof(int), -2, 0);
 
   if(length < 0){
@@ -138,6 +141,7 @@ bool next_fullerene(const buckygen_queue& Q, Graph& G)
     return true;
   } else if(msg.mtype == WORKER_FINISHED) {	// No more graphs to generate
     stop(Q);
+    Q.qid = -1;			// Close queue.
     return false;
   }
   abort();
